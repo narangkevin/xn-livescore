@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
   bool loading = false;
   String error = '';
 
-  //Textfield State
+  //textfield State
   String email = "";
   String password = "";
 

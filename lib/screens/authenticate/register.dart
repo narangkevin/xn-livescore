@@ -14,7 +14,7 @@ class _RegisterState extends State<Register> {
   bool loading = false;
   String error = '';
 
-  // Textfield State
+  // textfield State
   String email = "";
   String password = "";
 
