@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "768587292209",
+    "firebase_url": "https://xnlivescore.firebaseio.com",
+    "project_id": "xnlivescore",
+    "storage_bucket": "xnlivescore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768587292209:android:b0998fabd5a4e068c03f10",
+        "android_client_info": {
+          "package_name": "com.narangkevin.xnlivescore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768587292209-s6baecu8v9nd9u27stiham7foapq3cke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhi5B0rV3-1wRNeED3pCUUjQlxnhAdHdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768587292209-s6baecu8v9nd9u27stiham7foapq3cke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
