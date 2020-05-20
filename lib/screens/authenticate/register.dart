@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
+import 'package:xnlivescore/screens/wrapper.dart';
 import 'package:xnlivescore/services/auth.dart';
 import 'package:xnlivescore/shared/loading.dart';
 
@@ -17,6 +18,7 @@ class _RegisterState extends State<Register> {
   // textfield State
   String email = "";
   String password = "";
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +71,11 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter an email' : null,
+                          validator: (val) => !val.contains('@') |
+                                  !val.contains('.com') |
+                                  val.isEmpty
+                              ? 'Enter a valid email'
+                              : null,
                           onChanged: (val) {
                             setState(() => email = val);
                           },
@@ -95,7 +100,7 @@ class _RegisterState extends State<Register> {
                           },
                         ),
                         SizedBox(height: 10.0),
-                        TextField(
+                        TextFormField(
                           decoration: InputDecoration(
                               labelText: 'NICK NAME ',
                               labelStyle: TextStyle(
@@ -105,6 +110,9 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
+                          onChanged: (val) {
+                            setState(() => name = val);
+                          },
                         ),
                         SizedBox(height: 50.0),
                         InkWell(
@@ -115,7 +123,7 @@ class _RegisterState extends State<Register> {
                               setState(() => loading = true);
                               dynamic result =
                                   await _auth.registerWithEmailAndPassword(
-                                      email, password);
+                                      email, password, name);
                               if (result == null) {
                                 setState(() {
                                   error = 'Please supply a valid email';
@@ -126,7 +134,7 @@ class _RegisterState extends State<Register> {
                                   context,
                                   new MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          new SignIn()));
+                                          new Wrapper()));
                             }
                           },
                           child: Container(
@@ -144,7 +152,7 @@ class _RegisterState extends State<Register> {
                                     setState(() => loading = true);
                                     dynamic result = await _auth
                                         .registerWithEmailAndPassword(
-                                            email, password);
+                                            email, password, name);
                                     if (result == null) {
                                       setState(() {
                                         error = 'Please supply a valid email';
@@ -155,7 +163,9 @@ class _RegisterState extends State<Register> {
                                         context,
                                         new MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                new SignIn()));
+                                                new Wrapper()));
+                                  } else {
+                                    print('invalid credentials');
                                   }
                                 },
                                 child: Center(

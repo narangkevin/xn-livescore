@@ -87,8 +87,11 @@ class _SignInState extends State<SignIn> {
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.purple[900]))),
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter a valid Email.' : null,
+                            validator: (val) => !val.contains('@') |
+                                    !val.contains('.com') |
+                                    val.isEmpty
+                                ? 'Enter a valid email'
+                                : null,
                             onChanged: (val) {
                               setState(() => email = val);
                             },
@@ -139,7 +142,8 @@ class _SignInState extends State<SignIn> {
                                         email, password);
                                 if (result == null) {
                                   setState(() {
-                                    error = 'Could not Login with the credentials provided. Please provide valid credentials.';
+                                    error =
+                                        'Could not Login with the credentials provided. Please provide valid credentials.';
                                     loading = false;
                                   });
                                 }
@@ -168,7 +172,8 @@ class _SignInState extends State<SignIn> {
                                               email, password);
                                       if (result == null) {
                                         setState(() {
-                                          error = 'Could not Login with the credentials provided. Please provide valid credentials.';
+                                          error =
+                                              'Could not Login with the credentials provided. Please provide valid credentials.';
                                           loading = false;
                                         });
                                       }
