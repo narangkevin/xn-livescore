@@ -241,6 +241,9 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
+  - flutter_line_sdk (1.2.10):
+    - Flutter
+    - LineSDKSwift (~> 5.3)
   - google_sign_in (0.0.1):
     - Flutter
     - GoogleSignIn (~> 5.0)
@@ -303,6 +306,9 @@ PODS:
   - GTMSessionFetcher/Full (1.3.1):
     - GTMSessionFetcher/Core (= 1.3.1)
   - leveldb-library (1.22)
+  - LineSDKSwift (5.5.2):
+    - LineSDKSwift/Core (= 5.5.2)
+  - LineSDKSwift/Core (5.5.2)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -323,6 +329,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
+  - flutter_line_sdk (from `.symlinks/plugins/flutter_line_sdk/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - google_sign_in_web (from `.symlinks/plugins/google_sign_in_web/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
@@ -353,6 +360,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
+    - LineSDKSwift
     - nanopb
     - PromisesObjC
 
@@ -367,6 +375,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core_web/ios"
   Flutter:
     :path: Flutter
+  flutter_line_sdk:
+    :path: ".symlinks/plugins/flutter_line_sdk/ios"
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
   google_sign_in_web:
@@ -396,6 +406,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 71925e62a5d1cbfaff46aa4d5107e525cc48356a
   FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_line_sdk: d33d7fe40d317ee9d6e7a1ce61392d833e664140
   google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
   google_sign_in_web: 52deb24929ac0992baff65c57956031c44ed44c3
   GoogleAppMeasurement: 6e68a94d0eaeb1d73ef6b0ed4f7334e29d63ae29
@@ -408,12 +419,13 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  LineSDKSwift: 061ee1ba11072007a31026cf1c59b1fc4a3898d6
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
 
-PODFILE CHECKSUM: 7346059758722a62310f74024080f14f69e4e8d1
+PODFILE CHECKSUM: 10e7dd61f3984f1051567fa9a580ffadb9a632c2
 
 COCOAPODS: 1.9.1

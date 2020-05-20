@@ -15,7 +15,7 @@ class _RegisterState extends State<Register> {
   bool loading = false;
   String error = '';
 
-  // textfield State
+  // text field State
   String email = "";
   String password = "";
   String name = "";
@@ -93,7 +93,7 @@ class _RegisterState extends State<Register> {
                                       BorderSide(color: Colors.purple[900]))),
                           obscureText: true,
                           validator: (val) => val.length < 6
-                              ? 'Enter a password with at least "6 (SIX)" charcters '
+                              ? 'Enter a password with at least "6 (SIX)" characters '
                               : null,
                           onChanged: (val) {
                             setState(() => password = val);

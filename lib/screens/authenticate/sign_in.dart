@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 import 'package:xnlivescore/screens/authenticate/register.dart';
 import 'package:xnlivescore/screens/home/home.dart';
 import 'package:xnlivescore/screens/wrapper.dart';
@@ -31,7 +33,7 @@ class _SignInState extends State<SignIn> {
   bool loading = false;
   String error = '';
 
-  //textfield State
+  //text field State
   String email = "";
   String password = "";
 
@@ -109,7 +111,7 @@ class _SignInState extends State<SignIn> {
                                         BorderSide(color: Colors.purple[900]))),
                             obscureText: true,
                             validator: (val) => val.length < 6
-                                ? 'Enter a password with at least "6 (SIX)" charcters.'
+                                ? 'Enter a password with at least "6 (SIX)" characters.'
                                 : null,
                             onChanged: (val) {
                               setState(() => password = val);
@@ -199,9 +201,30 @@ class _SignInState extends State<SignIn> {
                           ),
                           SizedBox(height: 20.0),
                           InkWell(
-                            onTap: () {
+                            onTap: () async {
                               print('LINE button tapped');
                               //... LINE Login Code goes here
+
+                              try{
+                                dynamic result = await LineSDK.instance.login(
+                                  scopes: ["profile", "openid", "email"]
+                                );
+                                print(result.toString());
+                                if (result.toString() != null) {
+                                  setState(() {
+                                    loading = true;
+                                    Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new Home()));
+                                  });
+                                  print('Line login successful');
+                                } else {
+                                  setState(() {
+                                    loading = false;
+                                    print('Line login terminated due to some error');
+                                  });
+                                }
+                              } on PlatformException catch (e) {
+                                print(e.message);
+                              }
                             },
                             child: Container(
                               height: 40.0,

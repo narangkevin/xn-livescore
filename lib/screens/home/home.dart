@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 import 'package:xnlivescore/services/auth.dart';
 
 class Home extends StatelessWidget {
@@ -28,6 +29,8 @@ class Home extends StatelessWidget {
                 ),
               onPressed: () async {
                 await _auth.signOut();
+                Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new SignIn()));
+                print('Signed out');
               },
             ),
           ],

@@ -35,6 +35,8 @@ end
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
+  use_frameworks!
+  platform :ios, '10.0'
   
   # Flutter Pod
 
