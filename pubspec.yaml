@@ -32,6 +32,8 @@ dependencies:
   rxdart: ^0.23.1
   flutter_spinkit: "^4.1.2"
   flutter_line_sdk:
+  firebase_database: ^3.1.5
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

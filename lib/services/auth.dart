@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:xnlivescore/models/user.dart';
 import 'package:xnlivescore/services/database.dart';
 
@@ -44,13 +45,20 @@ class AuthService {
   }
 
   // Register with email and password
-  Future registerWithEmailAndPassword(String email, String password, String name) async {
+  Future registerWithEmailAndPassword(String email, String password, String name, String phone) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
 
       // Create new document for User with uid
-      await DatabaseService(uid: user.uid).updateUserData(user.email, name);
+      await DatabaseService(uid: user.uid).updateUserData(user.email, name, phone);
+
+      var _databaseRef = FirebaseDatabase().reference().child('users');
+      _databaseRef.push().set({
+        'email': user.email,
+        'name': name,
+        'phone': '(+66)' + phone,
+      });
       return _userFromFirebaseUser(user);
     } catch (error) {
       print(error.toString());

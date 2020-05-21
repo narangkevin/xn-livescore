@@ -9,10 +9,11 @@
    // Collection Reference
    final CollectionReference userCollection = Firestore.instance.collection('users');
 
-   Future<void> updateUserData(String email, String name) async{
+   Future<void> updateUserData(String email, String name, String phone) async{
      return await userCollection.document(uid).setData({
        'email': email,
        'name': name,
+       'phone': phone,
      });
    }
 

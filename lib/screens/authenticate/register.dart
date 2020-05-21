@@ -19,6 +19,7 @@ class _RegisterState extends State<Register> {
   String email = "";
   String password = "";
   String name = "";
+  String phone = "";
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +94,7 @@ class _RegisterState extends State<Register> {
                                       BorderSide(color: Colors.purple[900]))),
                           obscureText: true,
                           validator: (val) => val.length < 6
-                              ? 'Enter a password with at least "6 (SIX)" characters '
+                              ? 'Enter a password with at least "6 (SIX)" characters'
                               : null,
                           onChanged: (val) {
                             setState(() => password = val);
@@ -110,8 +111,29 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
+                          validator: (val) => val.length < 1
+                              ? 'Enter a nick name'
+                              : null,
                           onChanged: (val) {
                             setState(() => name = val);
+                          },
+                        ),
+                        SizedBox(height: 10.0),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              labelText: 'PHONE NUMBER ',
+                              labelStyle: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.purple[900]))),
+                          validator: (val) => val.length < 10
+                              ? 'Enter a phone number'
+                              : null,
+                          onChanged: (val) {
+                            setState(() => phone = val);
                           },
                         ),
                         SizedBox(height: 50.0),
@@ -123,7 +145,7 @@ class _RegisterState extends State<Register> {
                               setState(() => loading = true);
                               dynamic result =
                                   await _auth.registerWithEmailAndPassword(
-                                      email, password, name);
+                                      email, password, name, phone);
                               if (result == null) {
                                 setState(() {
                                   error = 'Please supply a valid email';
@@ -152,7 +174,7 @@ class _RegisterState extends State<Register> {
                                     setState(() => loading = true);
                                     dynamic result = await _auth
                                         .registerWithEmailAndPassword(
-                                            email, password, name);
+                                            email, password, name, phone);
                                     if (result == null) {
                                       setState(() {
                                         error = 'Please supply a valid email';
