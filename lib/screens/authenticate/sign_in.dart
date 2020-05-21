@@ -204,27 +204,46 @@ class _SignInState extends State<SignIn> {
                             onTap: () async {
                               print('LINE button tapped');
                               //... LINE Login Code goes here
-
-                              try{
+                              try {
                                 dynamic result = await LineSDK.instance.login(
-                                  scopes: ["profile", "openid", "email"]
-                                );
+                                    scopes: ["profile", "openid", "email"]);
                                 print(result.toString());
                                 if (result.toString() != null) {
                                   setState(() {
                                     loading = true;
-                                    Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new Home()));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                new Home()));
                                   });
                                   print('Line login successful');
                                 } else {
                                   setState(() {
                                     loading = false;
-                                    print('Line login terminated due to some error');
+                                    print(
+                                        'Line login terminated due to some error');
                                   });
                                 }
                               } on PlatformException catch (e) {
                                 print(e.message);
                               }
+                              dynamic res = await _auth.lineLogin();
+                              print ('res: '+ res);
+//                              dynamic result = await _auth.lineLogin();
+//                              print ("result: " + result);
+//                              if (!result.isEmpty()) {
+//                                setState(() {
+//                                  loading = true;
+//                                  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new Home()));
+//                                });
+//                                print('Line login successful');
+//                              } else {
+//                                setState(() {
+//                                  loading = false;
+//                                  print('Line login terminated due to some error');
+//                                });
+//                              }
                             },
                             child: Container(
                               height: 40.0,

@@ -4,7 +4,6 @@ import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 import 'package:xnlivescore/services/auth.dart';
 
 class Home extends StatelessWidget {
-
   final AuthService _auth = AuthService();
 
   @override
@@ -14,38 +13,43 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.purple[900],
-          title: Text('XN88 Live Score'),
+          title: Text('XNLiveScore'),
           actions: <Widget>[
             FlatButton.icon(
               icon: Icon(
                 Icons.exit_to_app,
                 color: Colors.white,
-                ),
+              ),
               label: Text(
                 'Logout',
                 style: TextStyle(
                   color: Colors.white,
                 ),
-                ),
+              ),
               onPressed: () async {
                 await _auth.signOut();
-                Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new SignIn()));
+                await _auth.lineSignOut();
+                Navigator.pushReplacement(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new SignIn()));
                 print('Signed out');
               },
             ),
           ],
         ),
         body: Container(
-            child: Center(
+          child: Center(
             child: FlatButton(
               color: Colors.purple[900],
-              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
               child: Text(
                 'Launch LiveScores',
                 style: TextStyle(color: Colors.white, fontSize: 18.0),
-                ),
+              ),
               // onPressed: _launchURL(),
-              onPressed: (){
+              onPressed: () {
                 _launchURL();
               },
             ),
@@ -54,12 +58,14 @@ class Home extends StatelessWidget {
       ),
     );
   }
+
   _launchURL() async {
     const url = 'https://www.xncasino.com/livescore';
     if (await canLaunch(url)) {
-      await launch(url,
-      // forceWebView: true,
-      // headers: <String, String>{'my_header_key': 'my_header_value'},
+      await launch(
+        url,
+        // forceWebView: true,
+        // headers: <String, String>{'my_header_key': 'my_header_value'},
       );
     } else {
       throw 'Could not launch $url';
