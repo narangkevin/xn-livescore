@@ -34,6 +34,7 @@ dependencies:
   flutter_line_sdk:
   firebase_database: ^3.1.5
   intl: ^0.16.1
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:

@@ -75,10 +75,11 @@ class AuthService {
   // Login with Facebook
 
   // Login with LINE
-  Future lineLogin () async{
+  Future lineLogin() async {
     try {
       final res = await LineSDK.instance.getProfile();
-      var _databaseRef = FirebaseDatabase().reference().child('lineusers').child(res.userId);
+      var _databaseRef =
+          FirebaseDatabase().reference().child('lineusers').child(res.userId);
       _databaseRef.set({
         'name': res.displayName,
         'avatar': res.pictureUrl,
