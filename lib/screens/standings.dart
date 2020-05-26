@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 
 final String token = 'b39bc0d0e1614167be195deda89428d4';
 
-class leagueStanding extends StatefulWidget{
+class leagueStanding extends StatefulWidget {
   String leagueCode;
   String leagueName;
   Color leagueColor;
@@ -18,7 +18,6 @@ class leagueStanding extends StatefulWidget{
 }
 
 class leagueStandingState extends State<leagueStanding> {
-
   String leagueCode;
   String leagueName;
   Color leagueColor;
@@ -32,28 +31,31 @@ class leagueStandingState extends State<leagueStanding> {
       //appBar: AppBar(title: Text(leagueName), backgroundColor: leagueColor,),
       child: FutureBuilder(
         future: getLeagueStandings(leagueCode),
-        builder: (context, snapshot){
-          if(snapshot.hasData == false){
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
             return Center(child: CircularProgressIndicator());
-          }
-          else{
+          } else {
             return Column(
               children: <Widget>[
-                Padding(child: rankingRow(''), padding: EdgeInsets.fromLTRB(0, 10, 0, 0),),
+                Padding(
+                  child: rankingRow(''),
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                ),
                 Divider(
                   color: Colors.white,
                 ),
                 Expanded(
                   child: ListView.separated(
-                    separatorBuilder: (context, i){
+                    separatorBuilder: (context, i) {
                       return Padding(
                           padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
-                          child: Divider(color: Colors.white, height: 15, )
-                      );
+                          child: Divider(
+                            color: Colors.white,
+                            height: 15,
+                          ));
                     },
                     itemCount: snapshot.data.length,
-                    itemBuilder: (context, i){
-
+                    itemBuilder: (context, i) {
                       return Container(
                         decoration: BoxDecoration(
                           color: leagueColor.withOpacity(0),
@@ -67,8 +69,7 @@ class leagueStandingState extends State<leagueStanding> {
                             snapshot.data[i].playedGames.toString(),
                             snapshot.data[i].w.toString(),
                             snapshot.data[i].d.toString(),
-                            snapshot.data[i].l.toString()
-                        ),
+                            snapshot.data[i].l.toString()),
                       );
                     },
                   ),
@@ -82,28 +83,54 @@ class leagueStandingState extends State<leagueStanding> {
   }
 }
 
-Widget rankingRow([String p = 'Pos' ,String t = 'Team', String pts = 'Pts', String mp = 'MP', String w = 'W', String d = 'D', String l= 'L']){
+Widget rankingRow(
+    [String p = 'Pos',
+    String t = 'Team',
+    String pts = 'Pts',
+    String mp = 'MP',
+    String w = 'W',
+    String d = 'D',
+    String l = 'L']) {
   return Row(
     children: <Widget>[
-      Expanded(child:Center(child: Text(p, style: plStyle),), flex: 1,),
-      Expanded(child:Text(t, style: plStyle), flex: 4,),
-      Expanded(child:Text(mp, style: plStyle), flex: 1,),
-      Expanded(child:Text(w, style: plStyle), flex: 1,),
-      Expanded(child:Text(d, style: plStyle), flex: 1,),
-      Expanded(child:Text(l, style: plStyle), flex: 1,),
-      Expanded(child:Text(pts, style: plStyle), flex: 1,)
+      Expanded(
+        child: Center(
+          child: Text(p, style: plStyle),
+        ),
+        flex: 1,
+      ),
+      Expanded(
+        child: Text(t, style: plStyle),
+        flex: 4,
+      ),
+      Expanded(
+        child: Text(mp, style: plStyle),
+        flex: 1,
+      ),
+      Expanded(
+        child: Text(w, style: plStyle),
+        flex: 1,
+      ),
+      Expanded(
+        child: Text(d, style: plStyle),
+        flex: 1,
+      ),
+      Expanded(
+        child: Text(l, style: plStyle),
+        flex: 1,
+      ),
+      Expanded(
+        child: Text(pts, style: plStyle),
+        flex: 1,
+      )
     ],
-
   );
 }
 
-final plStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 20,
-    fontWeight: FontWeight.w600
-);
+final plStyle =
+    TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600);
 
-class teamStanding{
+class teamStanding {
   int pos;
   Map<String, dynamic> teamInfo;
   int playedGames;
@@ -112,22 +139,22 @@ class teamStanding{
   int l;
   int pts;
 
-  teamStanding(this.pos, this.teamInfo, this.playedGames, this.w, this.d, this.l, this.pts);
-
+  teamStanding(this.pos, this.teamInfo, this.playedGames, this.w, this.d,
+      this.l, this.pts);
 }
 
-Future<List<teamStanding>> getLeagueStandings(String leagueCode) async{
-  Response r = await get(Uri.encodeFull('https://api.football-data.org/v2/competitions/$leagueCode/standings?standingType=TOTAL'),
-      headers: {
-        "X-Auth-Token" : token
-      }
-  );
+Future<List<teamStanding>> getLeagueStandings(String leagueCode) async {
+  Response r = await get(
+      Uri.encodeFull(
+          'https://api.football-data.org/v2/competitions/$leagueCode/standings?standingType=TOTAL'),
+      headers: {"X-Auth-Token": token});
   Map<String, dynamic> x = jsonDecode(r.body);
   List y = x['standings'];
 
   List<teamStanding> k = [];
-  for(var i in y[0]['table']){
-    k.add(new teamStanding(i['position'], i['team'], i['playedGames'], i['won'], i['draw'], i['lost'], i['points']));
+  for (var i in y[0]['table']) {
+    k.add(new teamStanding(i['position'], i['team'], i['playedGames'], i['won'],
+        i['draw'], i['lost'], i['points']));
   }
 
   return k;

@@ -65,10 +65,10 @@ class upcomingMatchesState extends State<upcomingMatches> {
                                   FittedBox(
                                       child: Text(snapshot.data[i].homeTeam,
                                           style: teamStyle),
-                                      fit: BoxFit.fitWidth
-                                  ),
+                                      fit: BoxFit.fitWidth),
                                   Padding(
-                                    padding: const EdgeInsets.fromLTRB(50,0,50,0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(50, 0, 50, 0),
                                     child: Divider(
                                       color: Colors.black,
                                     ),
@@ -76,8 +76,7 @@ class upcomingMatchesState extends State<upcomingMatches> {
                                   FittedBox(
                                       child: Text(snapshot.data[i].awayTeam,
                                           style: teamStyle),
-                                      fit: BoxFit.fitWidth
-                                  )
+                                      fit: BoxFit.fitWidth)
                                 ],
                               ),
                             ),
@@ -85,18 +84,15 @@ class upcomingMatchesState extends State<upcomingMatches> {
                             //second part of match details
                             Expanded(
                                 child: Column(
-                                  children: <Widget>[
-                                    FittedBox(
-                                        child: timeFormatter(snapshot.data[i]),
-                                        fit: BoxFit.fitWidth
-                                    ),
-                                    FittedBox(
-                                        child: dayFormatter(snapshot.data[i]),
-                                        fit: BoxFit.fitWidth
-                                    ),
-                                  ],
-                                )
-                            )
+                              children: <Widget>[
+                                FittedBox(
+                                    child: timeFormatter(snapshot.data[i]),
+                                    fit: BoxFit.fitWidth),
+                                FittedBox(
+                                    child: dayFormatter(snapshot.data[i]),
+                                    fit: BoxFit.fitWidth),
+                              ],
+                            ))
                           ],
                         ),
                       ),
@@ -135,7 +131,7 @@ Future<List<match>> getMatches(String code) async {
 }
 
 TextStyle teamStyle =
-TextStyle(color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic);
+    TextStyle(color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic);
 
 timeFormatter(match m) {
   String convertedTime = m.matchTime;
@@ -151,13 +147,13 @@ timeFormatter(match m) {
   return Text(convertedTime);
 }
 
-dayFormatter(match m){
+dayFormatter(match m) {
   String d = m.matchDay;
   List splitD = d.split('-');
-  if(splitD[0].toString().startsWith('0'))
+  if (splitD[0].toString().startsWith('0'))
     splitD[0] = splitD[0].toString().substring(1);
 
-  if(splitD[1].toString().startsWith('0'))
+  if (splitD[1].toString().startsWith('0'))
     splitD[1] = splitD[1].toString().substring(1);
 
   d = splitD[0] + '/' + splitD[1];
