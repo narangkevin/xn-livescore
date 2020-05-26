@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   provider: ^3.1.0
+  overlay_support: ^1.0.2
   url_launcher: ^5.4.2
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.12.9+5
@@ -20,8 +21,15 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   flutter_line_sdk:
   firebase_database: ^3.1.5
+  flutter_svg: any
+  firebase_remote_config: ^0.2.0+7
+  logger: ^0.7.0+2
+  redux_persist_flutter: ^0.8.2
   intl: ^0.16.1
   webview_flutter: ^0.3.22+1
+  shared_preferences: ^0.5.3+4
+  http: ^0.12.1
+
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +44,7 @@ flutter:
     - assets/facebook.png
     - assets/line.png
     - assets/appfinal.png
+    - assets/images/
 
   fonts:
     - family: Montserrat

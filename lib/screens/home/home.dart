@@ -1,51 +1,255 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/rendering.dart';
+import 'package:logger/logger.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 import 'package:xnlivescore/services/auth.dart';
+import 'package:xnlivescore/services/firebase_config.dart';
 
-class Home extends StatelessWidget {
+import 'package:xnlivescore/screens/upcomingMatches.dart';
+import 'package:xnlivescore/screens/standings.dart';
+import 'package:xnlivescore/screens/topScorers.dart';
+
+//Acquire token from https://www.football-data.org and insert it here
+final String token = '';
+var logger = Logger();
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return builder(context);
+  }
+}
+
+Widget builder(BuildContext context) {
+  return FutureBuilder(
+    future: Config().setupRemoteConfig(),
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
+      return snapshot.hasData || snapshot.hasError
+          ? listLeagues(context)
+          : Container(
+              color: Colors.white,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+    },
+  );
+}
+
+Widget listLeagues(BuildContext context) {
   final AuthService _auth = AuthService();
+
+  return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[900],
+        title: Text('XNLiveScore'),
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(
+              Icons.exit_to_app,
+              color: Colors.white,
+            ),
+            label: Text(
+              'Logout',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () async {
+              await _auth.signOut();
+              await _auth.lineSignOut();
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new SignIn()));
+              print('Signed out');
+            },
+          ),
+        ],
+      ),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 4,
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  itemListView(
+                      'assets/images/ic_premier_league.png',
+                      context,
+                      MainScreen('Premier League', 'PL',
+                          Color.fromRGBO(63, 16, 82, 1))),
+                  itemListView(
+                      'assets/images/ic_laliga.jpg',
+                      context,
+                      MainScreen(
+                          'La Liga', 'PD', Color.fromRGBO(0, 52, 114, 1))),
+                  itemListView(
+                      'assets/images/ic_serie_a.jpg',
+                      context,
+                      MainScreen(
+                          'Serie A', 'SA', Color.fromRGBO(29, 150, 71, 1))),
+                  itemListView(
+                      'assets/images/ic_bund.png',
+                      context,
+                      MainScreen(
+                          'Bundesliga', 'BL1', Color.fromRGBO(177, 40, 41, 1))),
+                  itemListView(
+                      'assets/images/ic_ligue1.jpg',
+                      context,
+                      MainScreen(
+                          'Ligue 1', 'FL1', Color.fromRGBO(227, 76, 38, 1))),
+                ],
+              ),
+            ),
+//            bannerAd()
+          ],
+        ),
+      ));
+}
+
+//Widget bannerAd() {
+//
+//  _launchURL() async {
+//    const url = 'https://www.xncasino.com/';
+//    if (await canLaunch(url)) {
+//      await launch(url,
+//        // forceWebView: true,
+//        // headers: <String, String>{'my_header_key': 'my_header_value'},
+//      );
+//    } else {
+//      throw 'Could not launch $url';
+//    }
+//  }
+//
+//  return FutureBuilder(
+//    future: isAppVisible(),
+//    builder: (BuildContext context, AsyncSnapshot snapshot) {
+//      return snapshot.hasData && snapshot.data == 1
+//          ? Expanded(
+//              flex: 1,
+//              child: Container(
+//                  color: Colors.purple[900],
+//                  padding: EdgeInsets.all(2),
+//                child: InkWell(
+//                  onTap: () {
+//                    _launchURL();
+//                  },
+//                  child: Image(
+//                    image: AssetImage('assets/images/banner.JPG'),
+//                  ),
+//                ),
+//              ),
+//            )
+//          : Container();
+//    },
+//  );
+//}
+
+Widget itemListView(
+    String imgPath, BuildContext context, StatefulWidget newScreen) {
+  return InkWell(
+    highlightColor: Colors.purple[900],
+    onTap: () {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => newScreen));
+    },
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(10.0, 4.0, 10.0, 4.0),
+      child: Card(
+        elevation: 20,
+        color: Colors.white,
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 10.0),
+                child: Image.asset(imgPath),
+              ),
+            ],
+          ),
+        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      ),
+    ),
+  );
+}
+
+class MainScreen extends StatefulWidget {
+  String leagueName;
+  String leagueCode;
+  Color leagueColor;
+
+  MainScreen(this.leagueName, this.leagueCode, this.leagueColor);
+
+  createState() => MainScreenState(leagueName, leagueCode, leagueColor);
+}
+
+class MainScreenState extends State<MainScreen> {
+  String leagueName;
+  String leagueCode;
+  Color leagueColor;
+
+  MainScreenState(this.leagueName, this.leagueCode, this.leagueColor);
+
+  Widget screenContent = Container();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DefaultTabController(
+      length: 3,
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.purple[900],
-          title: Text('XNLiveScore'),
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(
-                Icons.exit_to_app,
-                color: Colors.white,
-              ),
-              label: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Colors.white,
+            title: Text(leagueName),
+            bottom: TabBar(
+              tabs: <Widget>[
+                Tab(
+                  text: 'Matches',
                 ),
-              ),
-              onPressed: () async {
-                await _auth.signOut();
-                await _auth.lineSignOut();
-                Navigator.pushReplacement(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => new SignIn()));
-                print('Signed out');
-              },
+                Tab(
+                  text: 'Standings',
+                ),
+                Tab(
+                  text: 'Top Scorers',
+                )
+              ],
             ),
+            backgroundColor: leagueColor,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context, false),
+            )),
+        body: TabBarView(
+          children: <Widget>[
+            upcomingMatches(leagueCode, leagueColor),
+            leagueStanding(leagueCode, leagueName, leagueColor),
+            topScorers(leagueCode, leagueColor)
           ],
-        ),
-        body: WebView(
-          initialUrl: Uri.dataFromString(
-              '<html><body><iframe class="liveScore-iframe" ng-src="https://freelive.7m.com.cn/live.aspx?mark=en&amp;TimeZone=%2B0800&amp;wordAd=&amp;wadurl=http://&amp;width=700&amp;cpageBgColor=FFFFFF&amp;tableFontSize=11&amp;cborderColor=DDDDDD&amp;ctdColor1=FFFFFF&amp;ctdColor2=E0E9F6&amp;clinkColor=0044DD&amp;cdateFontColor=333333&amp;cdateBgColor=FFFFFF&amp;scoreFontSize=12&amp;cteamFontColor=000000&amp;cgoalFontColor=FF0000&amp;cgoalBgColor=FFFFE1&amp;cremarkFontColor=0000FF&amp;cremarkBgColor=F7F8F3&amp;Skins=10&amp;teamWeight=400&amp;scoreWeight=700&amp;goalWeight=400&amp;fontWeight=700&amp;DSTbox=" src="https://freelive.7m.com.cn/live.aspx?mark=en&amp;TimeZone=%2B0800&amp;wordAd=&amp;wadurl=http://&amp;width=700&amp;cpageBgColor=FFFFFF&amp;tableFontSize=11&amp;cborderColor=DDDDDD&amp;ctdColor1=FFFFFF&amp;ctdColor2=E0E9F6&amp;clinkColor=0044DD&amp;cdateFontColor=333333&amp;cdateBgColor=FFFFFF&amp;scoreFontSize=12&amp;cteamFontColor=000000&amp;cgoalFontColor=FF0000&amp;cgoalBgColor=FFFFE1&amp;cremarkFontColor=0000FF&amp;cremarkBgColor=F7F8F3&amp;Skins=10&amp;teamWeight=400&amp;scoreWeight=700&amp;goalWeight=400&amp;fontWeight=700&amp;DSTbox=" width="100%" height="100%" frameborder="0" ></iframe></body></html>',
-              mimeType: 'text/html').toString(),
-          javascriptMode: JavascriptMode.unrestricted,
         ),
       ),
     );
+  }
+
+  void displayStandings() {
+    setState(() {
+      screenContent = leagueStanding('PL', leagueName, leagueColor);
+    });
+  }
+
+  void displayMatches() {
+    setState(() {
+      screenContent = upcomingMatches(leagueCode, leagueColor);
+    });
   }
 }
