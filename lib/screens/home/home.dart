@@ -151,7 +151,7 @@ Widget listLeagues(BuildContext context) {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: Text('Profile'),
+              title: Text('Account'),
               onTap: () {
                 // Update the state of the app.
                 Navigator.pop(context);

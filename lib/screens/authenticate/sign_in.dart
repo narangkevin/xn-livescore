@@ -200,82 +200,82 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                           SizedBox(height: 20.0),
-                          InkWell(
-                            onTap: () async {
-                              print('LINE button tapped');
-                              //... LINE Login Code goes here
-                              try {
-                                dynamic result = await LineSDK.instance.login(
-                                    scopes: ["profile", "openid", "email"]);
-                                print(result.toString());
-                                if (result.toString() != null) {
-                                  setState(() {
-                                    loading = true;
-                                    Navigator.pushReplacement(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                new Home()));
-                                  });
-                                  print('Line login successful');
-                                } else {
-                                  setState(() {
-                                    loading = false;
-                                    print(
-                                        'Line login terminated due to some error');
-                                  });
-                                }
-                              } on PlatformException catch (e) {
-                                print(e.message);
-                              }
-                              dynamic res = await _auth.lineLogin();
-                              print ('res: '+ res);
-//                              dynamic result = await _auth.lineLogin();
-//                              print ("result: " + result);
-//                              if (!result.isEmpty()) {
-//                                setState(() {
-//                                  loading = true;
-//                                  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new Home()));
-//                                });
-//                                print('Line login successful');
-//                              } else {
-//                                setState(() {
-//                                  loading = false;
-//                                  print('Line login terminated due to some error');
-//                                });
+//                          InkWell(
+//                            onTap: () async {
+//                              print('LINE button tapped');
+//                              //... LINE Login Code goes here
+//                              try {
+//                                dynamic result = await LineSDK.instance.login(
+//                                    scopes: ["profile", "openid", "email"]);
+//                                print(result.toString());
+//                                if (result.toString() != null) {
+//                                  setState(() {
+//                                    loading = true;
+//                                    Navigator.pushReplacement(
+//                                        context,
+//                                        new MaterialPageRoute(
+//                                            builder: (BuildContext context) =>
+//                                                new Home()));
+//                                  });
+//                                  print('Line login successful');
+//                                } else {
+//                                  setState(() {
+//                                    loading = false;
+//                                    print(
+//                                        'Line login terminated due to some error');
+//                                  });
+//                                }
+//                              } on PlatformException catch (e) {
+//                                print(e.message);
 //                              }
-                            },
-                            child: Container(
-                              height: 40.0,
-                              color: Colors.transparent,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.green,
-                                        style: BorderStyle.solid,
-                                        width: 1.0),
-                                    color: Colors.transparent,
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-//                            Center(
-//                              child:
-//                              ImageIcon(AssetImage('assets/line.png')),
+//                              dynamic res = await _auth.lineLogin();
+//                              print ('res: '+ res);
+////                              dynamic result = await _auth.lineLogin();
+////                              print ("result: " + result);
+////                              if (!result.isEmpty()) {
+////                                setState(() {
+////                                  loading = true;
+////                                  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new Home()));
+////                                });
+////                                print('Line login successful');
+////                              } else {
+////                                setState(() {
+////                                  loading = false;
+////                                  print('Line login terminated due to some error');
+////                                });
+////                              }
+//                            },
+//                            child: Container(
+//                              height: 40.0,
+//                              color: Colors.transparent,
+//                              child: Container(
+//                                decoration: BoxDecoration(
+//                                    border: Border.all(
+//                                        color: Colors.green,
+//                                        style: BorderStyle.solid,
+//                                        width: 1.0),
+//                                    color: Colors.transparent,
+//                                    borderRadius: BorderRadius.circular(20.0)),
+//                                child: Row(
+//                                  mainAxisAlignment: MainAxisAlignment.center,
+//                                  children: <Widget>[
+////                            Center(
+////                              child:
+////                              ImageIcon(AssetImage('assets/line.png')),
+////                            ),
+//                                    SizedBox(width: 10.0),
+//                                    Center(
+//                                      child: Text('LINE Login',
+//                                          style: TextStyle(
+//                                              color: Colors.green,
+//                                              fontWeight: FontWeight.bold,
+//                                              fontFamily: 'Montserrat')),
+//                                    ),
+//                                  ],
+//                                ),
+//                              ),
 //                            ),
-                                    SizedBox(width: 10.0),
-                                    Center(
-                                      child: Text('LINE Login',
-                                          style: TextStyle(
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Montserrat')),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+//                          ),
                         ],
                       ),
                     )),
