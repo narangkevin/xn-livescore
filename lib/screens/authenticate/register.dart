@@ -111,9 +111,8 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
-                          validator: (val) => val.length < 1
-                              ? 'Enter a nick name'
-                              : null,
+                          validator: (val) =>
+                              val.length < 1 ? 'Enter a nick name' : null,
                           onChanged: (val) {
                             setState(() => name = val);
                           },
@@ -128,10 +127,9 @@ class _RegisterState extends State<Register> {
                                   color: Colors.grey),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
-                                  BorderSide(color: Colors.purple[900]))),
-                          validator: (val) => val.length < 10
-                              ? 'Enter a phone number'
-                              : null,
+                                      BorderSide(color: Colors.purple[900]))),
+                          validator: (val) =>
+                              val.length < 10 ? 'Enter a phone number' : null,
                           onChanged: (val) {
                             setState(() => phone = val);
                           },

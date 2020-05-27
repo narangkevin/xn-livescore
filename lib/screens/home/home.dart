@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/rendering.dart';
 import 'package:logger/logger.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
+import 'package:xnlivescore/screens/home/contactUs.dart';
+import 'package:xnlivescore/screens/home/profile.dart';
 import 'package:xnlivescore/services/auth.dart';
 import 'package:xnlivescore/services/firebase_config.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:xnlivescore/screens/upcomingMatches.dart';
 import 'package:xnlivescore/screens/standings.dart';
@@ -27,6 +28,21 @@ class _HomeState extends State<Home> {
   }
 }
 
+class Contact extends StatefulWidget {
+  @override
+  _ContactState createState() => _ContactState();
+}
+
+class _ContactState extends State<Contact> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+    );
+  }
+}
+
+
 Widget builder(BuildContext context) {
   return FutureBuilder(
     future: Config().setupRemoteConfig(),
@@ -45,34 +61,123 @@ Widget builder(BuildContext context) {
 
 Widget listLeagues(BuildContext context) {
   final AuthService _auth = AuthService();
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) async {
+    _selectedIndex = index;
+    if (_selectedIndex == 0) {
+
+    } else if (_selectedIndex == 1) {
+
+    } else if (_selectedIndex == 2){
+
+    }
+  }
+
+  _launchURL() async {
+    const url = 'https://www.xncasino.com/livetv';
+    if (await canLaunch(url)) {
+      await launch(url,
+        // forceWebView: true,
+        // headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
-        title: Text('XNLiveScore'),
+        title: Text('Home'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(
-              Icons.exit_to_app,
+              Icons.live_tv,
               color: Colors.white,
             ),
             label: Text(
-              'Logout',
+              'Live TV',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
-            onPressed: () async {
-              await _auth.signOut();
-              await _auth.lineSignOut();
-              Navigator.pushReplacement(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (BuildContext context) => new SignIn()));
-              print('Signed out');
+            onPressed: () {
+              _launchURL();
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'XN88 LiveScores',
+                style: TextStyle(
+                  color: Colors.purple[100],
+                  fontFamily: 'Montserrat',
+                  fontSize: 40,
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.purple[900],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new Home()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.mail),
+              title: Text('Contact'),
+              onTap: () {
+                // Update the state of the app.
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new ContactUs()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                // Update the state of the app.
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new Profile()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () async {
+                // Update the state of the app.
+                Navigator.pop(context);
+                await _auth.signOut();
+                await _auth.lineSignOut();
+                Navigator.pushReplacement(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new SignIn()));
+                print('Signed out');
+              },
+            ),
+          ],
+        ),
       ),
       body: Container(
         color: Colors.white,
