@@ -1,16 +1,24 @@
-# xnlivescore
+# XNLiveScore
 
-A new Flutter application.
+A Flutter application for viewing football livescores and standings.
 
-## Getting Started
+## Email Login
 
-This project is a starting point for a Flutter application.
+This project uses encrypted email login feature from Firebase. No passwords are stored in database as it gets encrypted by Firebase.
 
-A few resources to get you started if this is your first Flutter project:
+## RESTful API
+- This project uses RESTful API from https://www.football-data.org/ [Free version]
+- This project uses http dart package to call RESTful API from https://www.football-data.org/ [Free Version]
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## LINE Login
+- This project uses LINE SDK for flutter to add a LINE login feature.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## URL Launcher
+- This project also uses URL Launcher to launch Live TV
+
+### Leagues:
+- Premier League
+- LaLiga
+- Serie A
+- Bundes Liga
+- Ligue 1
