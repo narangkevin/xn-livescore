@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 import 'package:xnlivescore/screens/home/home.dart';
 import 'package:xnlivescore/services/auth.dart';
-import 'package:xnlivescore/shared/loading.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -56,7 +55,7 @@ class _ProfileState extends State<Profile> {
                 height: 20.0,
                 width: 150.0,
                 child: Divider(
-                  color: Colors.teal.shade100,
+                  color: Colors.purple.shade100,
                 ),
               ),
               Card(

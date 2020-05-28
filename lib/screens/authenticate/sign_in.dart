@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 import 'package:xnlivescore/screens/authenticate/register.dart';
-import 'package:xnlivescore/screens/home/home.dart';
 import 'package:xnlivescore/screens/wrapper.dart';
 import 'package:xnlivescore/services/auth.dart';
 import 'package:xnlivescore/shared/loading.dart';
@@ -148,6 +145,9 @@ class _SignInState extends State<SignIn> {
                                         'Could not Login with the credentials provided. Please provide valid credentials.';
                                     loading = false;
                                   });
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text("Invalid Credentials"),
+                                  ));
                                 }
                                 Navigator.pushReplacement(
                                     context,
@@ -178,6 +178,9 @@ class _SignInState extends State<SignIn> {
                                               'Could not Login with the credentials provided. Please provide valid credentials.';
                                           loading = false;
                                         });
+                                        Scaffold.of(context).showSnackBar(SnackBar(
+                                          content: Text("Invalid Credentials"),
+                                        ));
                                       }
                                       Navigator.pushReplacement(
                                           context,

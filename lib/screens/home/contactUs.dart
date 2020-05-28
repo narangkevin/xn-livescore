@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ContactUs extends StatefulWidget {
   @override
   _ContactUsState createState() => _ContactUsState();
@@ -44,7 +45,7 @@ class _ContactUsState extends State<ContactUs> {
               height: 20.0,
               width: 150.0,
               child: Divider(
-                color: Colors.teal.shade100,
+                color: Colors.purple.shade100,
               ),
             ),
             Card(
@@ -57,7 +58,7 @@ class _ContactUsState extends State<ContactUs> {
                     color: Colors.purple[900],
                   ),
                   title: Text(
-                    '+66949090301',
+                    '+66987654321',
                     style: TextStyle(
                       color: Colors.purple.shade900,
                       fontFamily: 'Montserrat',
@@ -77,7 +78,7 @@ class _ContactUsState extends State<ContactUs> {
                     color: Colors.purple[900],
                   ),
                   title: Text(
-                    'narangkevin@gmail.com',
+                    'xnemail@gmail.com',
                     style: TextStyle(
                       color: Colors.purple.shade900,
                       fontFamily: 'Montserrat',

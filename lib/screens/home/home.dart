@@ -36,12 +36,9 @@ class Contact extends StatefulWidget {
 class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-    );
+    return Scaffold();
   }
 }
-
 
 Widget builder(BuildContext context) {
   return FutureBuilder(
@@ -66,18 +63,15 @@ Widget listLeagues(BuildContext context) {
   void _onItemTapped(int index) async {
     _selectedIndex = index;
     if (_selectedIndex == 0) {
-
     } else if (_selectedIndex == 1) {
-
-    } else if (_selectedIndex == 2){
-
-    }
+    } else if (_selectedIndex == 2) {}
   }
 
   _launchURL() async {
-    const url = 'https://www.xncasino.com/livetv';
+    const url = '';
     if (await canLaunch(url)) {
-      await launch(url,
+      await launch(
+        url,
         // forceWebView: true,
         // headers: <String, String>{'my_header_key': 'my_header_value'},
       );
@@ -87,145 +81,143 @@ Widget listLeagues(BuildContext context) {
   }
 
   return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple[900],
-        title: Text('Home'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(
-              Icons.live_tv,
-              color: Colors.white,
+    appBar: AppBar(
+      backgroundColor: Colors.purple[900],
+      title: Text('Home'),
+      actions: <Widget>[
+        FlatButton.icon(
+          icon: Icon(
+            Icons.live_tv,
+            color: Colors.purple[100],
+          ),
+          label: Text(
+            'Live TV',
+            style: TextStyle(
+              color: Colors.purple[100],
             ),
-            label: Text(
-              'Live TV',
+          ),
+          onPressed: () {
+            _launchURL();
+          },
+        ),
+      ],
+    ),
+    drawer: Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text(
+              'XN88 LiveScores',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.purple[100],
+                fontFamily: 'Montserrat',
+                fontSize: 40,
               ),
             ),
-            onPressed: () {
-              _launchURL();
+            decoration: BoxDecoration(
+              color: Colors.purple[900],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new Home()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.mail),
+            title: Text('Contact'),
+            onTap: () {
+              // Update the state of the app.
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new ContactUs()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: Text('Account'),
+            onTap: () {
+              // Update the state of the app.
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new Profile()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: Text('Logout'),
+            onTap: () async {
+              // Update the state of the app.
+              Navigator.pop(context);
+              await _auth.signOut();
+              await _auth.lineSignOut();
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new SignIn()));
+              print('Signed out');
             },
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'XN88 LiveScores',
-                style: TextStyle(
-                  color: Colors.purple[100],
-                  fontFamily: 'Montserrat',
-                  fontSize: 40,
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.purple[900],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
+    ),
+    body: Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 4,
+            child: ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                itemListView(
+                    'assets/images/ic_premier_league.png',
                     context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => new Home()));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.mail),
-              title: Text('Contact'),
-              onTap: () {
-                // Update the state of the app.
-                Navigator.pop(context);
-                Navigator.push(
+                    MainScreen(
+                        'Premier League', 'PL', Color.fromRGBO(63, 16, 82, 1))),
+                itemListView('assets/images/ic_laliga.jpg', context,
+                    MainScreen('La Liga', 'PD', Color.fromRGBO(0, 52, 114, 1))),
+                itemListView(
+                    'assets/images/ic_serie_a.jpg',
                     context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => new ContactUs()));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: Text('Account'),
-              onTap: () {
-                // Update the state of the app.
-                Navigator.pop(context);
-                Navigator.push(
+                    MainScreen(
+                        'Serie A', 'SA', Color.fromRGBO(29, 150, 71, 1))),
+                itemListView(
+                    'assets/images/ic_bund.png',
                     context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => new Profile()));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: () async {
-                // Update the state of the app.
-                Navigator.pop(context);
-                await _auth.signOut();
-                await _auth.lineSignOut();
-                Navigator.pushReplacement(
+                    MainScreen(
+                        'Bundesliga', 'BL1', Color.fromRGBO(177, 40, 41, 1))),
+                itemListView(
+                    'assets/images/ic_ligue1.jpg',
                     context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => new SignIn()));
-                print('Signed out');
-              },
+                    MainScreen(
+                        'Ligue 1', 'FL1', Color.fromRGBO(227, 76, 38, 1))),
+              ],
             ),
-          ],
-        ),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  itemListView(
-                      'assets/images/ic_premier_league.png',
-                      context,
-                      MainScreen('Premier League', 'PL',
-                          Color.fromRGBO(63, 16, 82, 1))),
-                  itemListView(
-                      'assets/images/ic_laliga.jpg',
-                      context,
-                      MainScreen(
-                          'La Liga', 'PD', Color.fromRGBO(0, 52, 114, 1))),
-                  itemListView(
-                      'assets/images/ic_serie_a.jpg',
-                      context,
-                      MainScreen(
-                          'Serie A', 'SA', Color.fromRGBO(29, 150, 71, 1))),
-                  itemListView(
-                      'assets/images/ic_bund.png',
-                      context,
-                      MainScreen(
-                          'Bundesliga', 'BL1', Color.fromRGBO(177, 40, 41, 1))),
-                  itemListView(
-                      'assets/images/ic_ligue1.jpg',
-                      context,
-                      MainScreen(
-                          'Ligue 1', 'FL1', Color.fromRGBO(227, 76, 38, 1))),
-                ],
-              ),
-            ),
+          ),
 //            bannerAd()
-          ],
-        ),
-      ));
+        ],
+      ),
+    ),
+  );
 }
 
 //Widget bannerAd() {
 //
 //  _launchURL() async {
-//    const url = 'https://www.xncasino.com/';
+//    const url = '';
 //    if (await canLaunch(url)) {
 //      await launch(url,
 //        // forceWebView: true,

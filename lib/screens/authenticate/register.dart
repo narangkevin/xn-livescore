@@ -185,6 +185,9 @@ class _RegisterState extends State<Register> {
                                             builder: (BuildContext context) =>
                                                 new Wrapper()));
                                   } else {
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      content: Text("Invalid Credentials"),
+                                    ));
                                     print('invalid credentials');
                                   }
                                 },
