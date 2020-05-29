@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xnlivescore/screens/authenticate/pushRegister.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 import 'package:xnlivescore/screens/wrapper.dart';
 import 'package:xnlivescore/services/auth.dart';
@@ -223,7 +224,7 @@ class _RegisterState extends State<Register> {
                                     context,
                                     new MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            new SignIn()));
+                                            new PushRegister()));
                               },
                               child: Center(
                                 child: Text('Go Back',
@@ -233,6 +234,35 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                           ),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Already Have An Account?',
+                              style: TextStyle(fontFamily: 'Montserrat'),
+                            ),
+                            SizedBox(width: 5.0),
+                            InkWell(
+                              onTap: () {
+                                // Navigator.of(context).pushNamed('/signup1');
+                                Navigator.pushReplacement(
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                        new SignIn()));
+                              },
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                    color: Colors.purple[900],
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

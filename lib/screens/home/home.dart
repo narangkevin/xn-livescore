@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:logger/logger.dart';
+import 'package:xnlivescore/screens/authenticate/pushRegister.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 import 'package:xnlivescore/screens/home/contactUs.dart';
 import 'package:xnlivescore/screens/home/profile.dart';
+import 'package:xnlivescore/screens/wrapper.dart';
 import 'package:xnlivescore/services/auth.dart';
 import 'package:xnlivescore/services/firebase_config.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -174,7 +176,7 @@ Widget listLeagues(BuildContext context) {
       ),
     ),
     body: Container(
-      color: Colors.white,
+      color: Colors.purple[900],
       child: Column(
         children: <Widget>[
           Expanded(

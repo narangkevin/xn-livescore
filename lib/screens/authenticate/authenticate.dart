@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xnlivescore/screens/authenticate/pushRegister.dart';
 import 'package:xnlivescore/screens/authenticate/sign_in.dart';
 
 class Authenticate extends StatefulWidget {
@@ -10,6 +11,6 @@ class _AuthenticateState extends State<Authenticate> {
   // Redirects to Sign-In page
   @override
   Widget build(BuildContext context) {
-    return SignIn();
+    return PushRegister();
   }
 }
