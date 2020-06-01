@@ -8,6 +8,11 @@ class PushRegister extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.purple[900],
+      appBar: AppBar(
+        backgroundColor: Colors.purple[900],
+        elevation: 0,
+        title: Image.asset('assets/images/xnappbarlogo.png'),
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(1),

@@ -87,21 +87,21 @@ Widget listLeagues(BuildContext context) {
       backgroundColor: Colors.purple[900],
       title: Text('Home'),
       actions: <Widget>[
-        FlatButton.icon(
-          icon: Icon(
-            Icons.live_tv,
-            color: Colors.purple[100],
-          ),
-          label: Text(
-            'Live TV',
-            style: TextStyle(
-              color: Colors.purple[100],
-            ),
-          ),
-          onPressed: () {
-            _launchURL();
-          },
-        ),
+//        FlatButton.icon(
+//          icon: Icon(
+//            Icons.live_tv,
+//            color: Colors.purple[100],
+//          ),
+//          label: Text(
+//            'Live TV',
+//            style: TextStyle(
+//              color: Colors.purple[100],
+//            ),
+//          ),
+//          onPressed: () {
+//            _launchURL();
+//          },
+//        ),
       ],
     ),
     drawer: Drawer(
@@ -110,14 +110,19 @@ Widget listLeagues(BuildContext context) {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-              'XN88 LiveScores',
-              style: TextStyle(
-                color: Colors.purple[100],
-                fontFamily: 'Montserrat',
-                fontSize: 40,
+            child: Image(
+              image: AssetImage(
+                'assets/images/xn88logo.png',
               ),
             ),
+//            child: Text(
+//              'XN88 LiveScores',
+//              style: TextStyle(
+//                color: Colors.purple[100],
+//                fontFamily: 'Montserrat',
+//                fontSize: 40,
+//              ),
+//            ),
             decoration: BoxDecoration(
               color: Colors.purple[900],
             ),
@@ -157,6 +162,13 @@ Widget listLeagues(BuildContext context) {
                       builder: (BuildContext context) => new Profile()));
             },
           ),
+          Divider(
+            color: Colors.grey,
+            height: 20,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+          ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: Text('Logout'),
@@ -168,7 +180,8 @@ Widget listLeagues(BuildContext context) {
               Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
-                      builder: (BuildContext context) => new PushRegister()));
+                      builder: (BuildContext context) =>
+                      new PushRegister()));
               print('Signed out');
             },
           ),

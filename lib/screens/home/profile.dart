@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
                 'XNLiveScore Member',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.purple[100],
+                    color: Colors.amber[600],
                     fontFamily: 'Montserrat',
                     letterSpacing: 2.5,
                     fontWeight: FontWeight.bold),
@@ -55,49 +55,49 @@ class _ProfileState extends State<Profile> {
                 height: 20.0,
                 width: 150.0,
                 child: Divider(
-                  color: Colors.purple.shade100,
+                  color: Colors.amber.shade600,
                 ),
               ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.phone,
-                      color: Colors.purple[900],
-                    ),
-                    title: Text(
-                      '+66987654321',
-                      style: TextStyle(
-                        color: Colors.purple.shade900,
-                        fontFamily: 'Montserrat',
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.mail,
-                      color: Colors.purple[900],
-                    ),
-                    title: Text(
-                      'xnemail@gmail.com',
-                      style: TextStyle(
-                        color: Colors.purple.shade900,
-                        fontFamily: 'Montserrat',
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+//              Card(
+//                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+//                child: Padding(
+//                  padding: const EdgeInsets.all(0.0),
+//                  child: ListTile(
+//                    leading: Icon(
+//                      Icons.phone,
+//                      color: Colors.purple[900],
+//                    ),
+//                    title: Text(
+//                      '+66987654321',
+//                      style: TextStyle(
+//                        color: Colors.purple.shade900,
+//                        fontFamily: 'Montserrat',
+//                        fontSize: 20.0,
+//                      ),
+//                    ),
+//                  ),
+//                ),
+//              ),
+//              Card(
+//                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+//                child: Padding(
+//                  padding: const EdgeInsets.all(0.0),
+//                  child: ListTile(
+//                    leading: Icon(
+//                      Icons.mail,
+//                      color: Colors.purple[900],
+//                    ),
+//                    title: Text(
+//                      'xnemail@gmail.com',
+//                      style: TextStyle(
+//                        color: Colors.purple.shade900,
+//                        fontFamily: 'Montserrat',
+//                        fontSize: 20.0,
+//                      ),
+//                    ),
+//                  ),
+//                ),
+//              ),
               SizedBox(height: 20.0),
               Container(
                 padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),

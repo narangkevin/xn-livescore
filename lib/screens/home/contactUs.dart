@@ -33,10 +33,10 @@ class _ContactUsState extends State<ContactUs> {
                   fontFamily: 'Montserrat'),
             ),
             Text(
-              'XNLiveScore Member',
+              'Contact Us',
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.purple[100],
+                  color: Colors.amber[600],
                   fontFamily: 'Montserrat',
                   letterSpacing: 2.5,
                   fontWeight: FontWeight.bold),
@@ -45,7 +45,7 @@ class _ContactUsState extends State<ContactUs> {
               height: 20.0,
               width: 150.0,
               child: Divider(
-                color: Colors.purple.shade100,
+                color: Colors.amber.shade600,
               ),
             ),
             Card(
