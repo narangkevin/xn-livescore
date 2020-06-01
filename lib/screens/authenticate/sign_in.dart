@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xnlivescore/screens/authenticate/pushRegister.dart';
 import 'package:xnlivescore/screens/authenticate/register.dart';
 import 'package:xnlivescore/screens/wrapper.dart';
 import 'package:xnlivescore/services/auth.dart';
@@ -203,6 +204,35 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                           SizedBox(height: 20.0),
+                          Container(
+                            height: 40.0,
+                            color: Colors.transparent,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.black,
+                                      style: BorderStyle.solid,
+                                      width: 1.0),
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: InkWell(
+                                onTap: () {
+                                  // Navigator.of(context).pop();
+                                  Navigator.pushReplacement(
+                                      context,
+                                      new MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                          new PushRegister()));
+                                },
+                                child: Center(
+                                  child: Text('Go Back',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Montserrat')),
+                                ),
+                              ),
+                            ),
+                          ),
 //                          InkWell(
 //                            onTap: () async {
 //                              print('LINE button tapped');

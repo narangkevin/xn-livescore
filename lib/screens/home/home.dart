@@ -168,7 +168,7 @@ Widget listLeagues(BuildContext context) {
               Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
-                      builder: (BuildContext context) => new SignIn()));
+                      builder: (BuildContext context) => new PushRegister()));
               print('Signed out');
             },
           ),
@@ -185,7 +185,7 @@ Widget listLeagues(BuildContext context) {
               shrinkWrap: true,
               children: <Widget>[
                 itemListView(
-                    'assets/images/ic_premier_league.png',
+                    'assets/images/ic_premier_league.jpg',
                     context,
                     MainScreen(
                         'Premier League', 'PL', Color.fromRGBO(63, 16, 82, 1))),
@@ -197,7 +197,7 @@ Widget listLeagues(BuildContext context) {
                     MainScreen(
                         'Serie A', 'SA', Color.fromRGBO(29, 150, 71, 1))),
                 itemListView(
-                    'assets/images/ic_bund.png',
+                    'assets/images/ic_bund.jpg',
                     context,
                     MainScreen(
                         'Bundesliga', 'BL1', Color.fromRGBO(177, 40, 41, 1))),
