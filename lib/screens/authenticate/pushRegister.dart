@@ -57,11 +57,11 @@ class PushRegister extends StatelessWidget {
                 color: Colors.purple[900],
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            new Register()));
+//                    Navigator.pushReplacement(
+//                        context,
+//                        new MaterialPageRoute(
+//                            builder: (BuildContext context) =>
+//                            new Register()));
                   },
                   child: Row(
                     children: <Widget>[
@@ -89,14 +89,14 @@ class PushRegister extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'Get Started',
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 15.0,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                             color: Colors.amber[600],
@@ -107,7 +107,7 @@ class PushRegister extends StatelessWidget {
                   ),
                   Divider(
                     color: Colors.amber[600],
-                    height: 15,
+                    height: 5,
                     thickness: 1,
                     indent: 20,
                     endIndent: 20,

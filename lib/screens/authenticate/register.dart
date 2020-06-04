@@ -251,7 +251,7 @@ class _RegisterState extends State<Register> {
                                     context,
                                     new MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                        new SignIn()));
+                                            new SignIn()));
                               },
                               child: Text(
                                 'Login',
