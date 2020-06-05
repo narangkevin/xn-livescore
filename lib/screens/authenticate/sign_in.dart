@@ -110,7 +110,7 @@ class _SignInState extends State<SignIn> {
                                         BorderSide(color: Colors.purple[900]))),
                             obscureText: true,
                             validator: (val) => val.length < 6
-                                ? 'Enter at least "6 (SIX)" characters. / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัวะ'
+                                ? 'Enter at least 6 characters / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัวะ'
                                 : null,
                             onChanged: (val) {
                               setState(() => password = val);

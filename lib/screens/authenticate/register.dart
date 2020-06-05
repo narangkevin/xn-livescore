@@ -27,7 +27,7 @@ class _RegisterState extends State<Register> {
     return loading
         ? Loading()
         : Scaffold(
-      backgroundColor: Colors.deepPurple[50],
+            backgroundColor: Colors.deepPurple[50],
             resizeToAvoidBottomPadding: false,
             body:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
@@ -96,7 +96,7 @@ class _RegisterState extends State<Register> {
                                       BorderSide(color: Colors.purple[900]))),
                           obscureText: true,
                           validator: (val) => val.length < 6
-                              ? 'Enter at least "6 (SIX)" characters / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัว'
+                              ? 'Enter at least 6 characters / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัว'
                               : null,
                           onChanged: (val) {
                             setState(() => password = val);
@@ -113,8 +113,9 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
-                          validator: (val) =>
-                              val.length < 1 ? 'Enter a nick name / กรอกชื่อเล่น' : null,
+                          validator: (val) => val.length < 1
+                              ? 'Enter a nick name / กรอกชื่อเล่น'
+                              : null,
                           onChanged: (val) {
                             setState(() => name = val);
                           },
@@ -130,8 +131,9 @@ class _RegisterState extends State<Register> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
-                          validator: (val) =>
-                              val.length < 10 ? 'Enter a phone number / กรอกเบอร์โทรศัพท์มือถือ' : null,
+                          validator: (val) => val.length < 10
+                              ? 'Enter a phone number / กรอกเบอร์โทรศัพท์มือถือ'
+                              : null,
                           onChanged: (val) {
                             setState(() => phone = val);
                           },
@@ -277,7 +279,8 @@ class _RegisterState extends State<Register> {
                                   color: Colors.purple[900],
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.purpleAccent[700].withOpacity(0.5),
+                                      color: Colors.purpleAccent[700]
+                                          .withOpacity(0.5),
                                       spreadRadius: 1,
                                       blurRadius: 1,
                                       offset: Offset(0, 1),
