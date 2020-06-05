@@ -206,35 +206,35 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                         SizedBox(height: 20.0),
-                        Container(
-                          height: 40.0,
-                          color: Colors.transparent,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.black,
-                                    style: BorderStyle.solid,
-                                    width: 1.0),
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: InkWell(
-                              onTap: () {
-                                // Navigator.of(context).pop();
-                                Navigator.pushReplacement(
-                                    context,
-                                    new MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            new PushRegister()));
-                              },
-                              child: Center(
-                                child: Text('Go Back',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat')),
-                              ),
-                            ),
-                          ),
-                        ),
+//                        Container(
+//                          height: 40.0,
+//                          color: Colors.transparent,
+//                          child: Container(
+//                            decoration: BoxDecoration(
+//                                border: Border.all(
+//                                    color: Colors.black,
+//                                    style: BorderStyle.solid,
+//                                    width: 1.0),
+//                                color: Colors.transparent,
+//                                borderRadius: BorderRadius.circular(20.0)),
+//                            child: InkWell(
+//                              onTap: () {
+//                                // Navigator.of(context).pop();
+//                                Navigator.pushReplacement(
+//                                    context,
+//                                    new MaterialPageRoute(
+//                                        builder: (BuildContext context) =>
+//                                            new PushRegister()));
+//                              },
+//                              child: Center(
+//                                child: Text('Go Back',
+//                                    style: TextStyle(
+//                                        fontWeight: FontWeight.bold,
+//                                        fontFamily: 'Montserrat')),
+//                              ),
+//                            ),
+//                          ),
+//                        ),
                         SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -263,6 +263,35 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          color: Colors.transparent,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.grey[200],
+                                ),
+                                child: IconButton(
+                                  icon: Icon(Icons.arrow_back),
+                                  tooltip: 'Go Back',
+                                  color: Colors.purple[900],
+                                  hoverColor: Colors.purple[400],
+                                  iconSize: 40,
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                new PushRegister()));
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

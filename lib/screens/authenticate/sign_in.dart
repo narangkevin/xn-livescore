@@ -179,7 +179,8 @@ class _SignInState extends State<SignIn> {
                                               'Could not Login with the credentials provided. Please provide valid credentials.';
                                           loading = false;
                                         });
-                                        Scaffold.of(context).showSnackBar(SnackBar(
+                                        Scaffold.of(context)
+                                            .showSnackBar(SnackBar(
                                           content: Text("Invalid Credentials"),
                                         ));
                                       }
@@ -204,35 +205,35 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                           SizedBox(height: 20.0),
-                          Container(
-                            height: 40.0,
-                            color: Colors.transparent,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0),
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              child: InkWell(
-                                onTap: () {
-                                  // Navigator.of(context).pop();
-                                  Navigator.pushReplacement(
-                                      context,
-                                      new MaterialPageRoute(
-                                          builder: (BuildContext context) =>
-                                          new PushRegister()));
-                                },
-                                child: Center(
-                                  child: Text('Go Back',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Montserrat')),
-                                ),
-                              ),
-                            ),
-                          ),
+//                          Container(
+//                            height: 40.0,
+//                            color: Colors.transparent,
+//                            child: Container(
+//                              decoration: BoxDecoration(
+//                                  border: Border.all(
+//                                      color: Colors.black,
+//                                      style: BorderStyle.solid,
+//                                      width: 1.0),
+//                                  color: Colors.transparent,
+//                                  borderRadius: BorderRadius.circular(20.0)),
+//                              child: InkWell(
+//                                onTap: () {
+//                                  // Navigator.of(context).pop();
+//                                  Navigator.pushReplacement(
+//                                      context,
+//                                      new MaterialPageRoute(
+//                                          builder: (BuildContext context) =>
+//                                              new PushRegister()));
+//                                },
+//                                child: Center(
+//                                  child: Text('Go Back',
+//                                      style: TextStyle(
+//                                          fontWeight: FontWeight.bold,
+//                                          fontFamily: 'Montserrat')),
+//                                ),
+//                              ),
+//                            ),
+//                          ),
 //                          InkWell(
 //                            onTap: () async {
 //                              print('LINE button tapped');
@@ -340,6 +341,35 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ],
+                ),
+                SizedBox(height: 20.0),
+                Container(
+                  color: Colors.transparent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey[200],
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back),
+                          tooltip: 'Go Back',
+                          color: Colors.purple[900],
+                          hoverColor: Colors.purple[400],
+                          iconSize: 40,
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                    new PushRegister()));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
