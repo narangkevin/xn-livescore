@@ -166,7 +166,7 @@ class _ProfileState extends State<Profile> {
 //                            ),
                           SizedBox(width: 10.0),
                           Center(
-                            child: Text('LINE Login',
+                            child: Text('Link LINE Account',
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,

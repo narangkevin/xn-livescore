@@ -40,6 +40,7 @@ class _SignInState extends State<SignIn> {
     return loading
         ? Loading()
         : Scaffold(
+            backgroundColor: Colors.deepPurple[50],
             resizeToAvoidBottomPadding: false,
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +80,7 @@ class _SignInState extends State<SignIn> {
                         children: <Widget>[
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: 'EMAIL',
+                                labelText: 'EMAIL / อีเมลล์',
                                 labelStyle: TextStyle(
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.bold,
@@ -90,7 +91,7 @@ class _SignInState extends State<SignIn> {
                             validator: (val) => !val.contains('@') |
                                     !val.contains('.com') |
                                     val.isEmpty
-                                ? 'Enter a valid email'
+                                ? 'Enter a valid email / ใส่อีเมลที่ถูกต้อง'
                                 : null,
                             onChanged: (val) {
                               setState(() => email = val);
@@ -99,7 +100,7 @@ class _SignInState extends State<SignIn> {
                           SizedBox(height: 20.0),
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: 'PASSWORD',
+                                labelText: 'PASSWORD / รหัสผ่าน',
                                 labelStyle: TextStyle(
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.bold,
@@ -109,7 +110,7 @@ class _SignInState extends State<SignIn> {
                                         BorderSide(color: Colors.purple[900]))),
                             obscureText: true,
                             validator: (val) => val.length < 6
-                                ? 'Enter a password with at least "6 (SIX)" characters.'
+                                ? 'Enter at least "6 (SIX)" characters. / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัวะ'
                                 : null,
                             onChanged: (val) {
                               setState(() => password = val);
@@ -332,7 +333,7 @@ class _SignInState extends State<SignIn> {
                                     new Register()));
                       },
                       child: Text(
-                        'Register',
+                        'Register / ลงทะเบียน',
                         style: TextStyle(
                             color: Colors.purple[900],
                             fontFamily: 'Montserrat',
@@ -351,12 +352,20 @@ class _SignInState extends State<SignIn> {
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.grey[200],
+                          color: Colors.purple[900],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purpleAccent[700].withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
                         ),
                         child: IconButton(
                           icon: Icon(Icons.arrow_back),
                           tooltip: 'Go Back',
-                          color: Colors.purple[900],
+                          color: Colors.white,
                           hoverColor: Colors.purple[400],
                           iconSize: 40,
                           onPressed: () {
@@ -364,7 +373,7 @@ class _SignInState extends State<SignIn> {
                                 context,
                                 new MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                    new PushRegister()));
+                                        new PushRegister()));
                           },
                         ),
                       ),

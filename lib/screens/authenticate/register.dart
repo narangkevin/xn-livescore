@@ -27,6 +27,7 @@ class _RegisterState extends State<Register> {
     return loading
         ? Loading()
         : Scaffold(
+      backgroundColor: Colors.deepPurple[50],
             resizeToAvoidBottomPadding: false,
             body:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
@@ -63,7 +64,7 @@ class _RegisterState extends State<Register> {
                       children: <Widget>[
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'EMAIL',
+                              labelText: 'EMAIL / อีเมลล์',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -76,7 +77,7 @@ class _RegisterState extends State<Register> {
                           validator: (val) => !val.contains('@') |
                                   !val.contains('.com') |
                                   val.isEmpty
-                              ? 'Enter a valid email'
+                              ? 'Enter a valid email / ใส่อีเมลที่ถูกต้อง'
                               : null,
                           onChanged: (val) {
                             setState(() => email = val);
@@ -85,7 +86,7 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10.0),
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'PASSWORD ',
+                              labelText: 'PASSWORD / รหัสผ่าน',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class _RegisterState extends State<Register> {
                                       BorderSide(color: Colors.purple[900]))),
                           obscureText: true,
                           validator: (val) => val.length < 6
-                              ? 'Enter a password with at least "6 (SIX)" characters'
+                              ? 'Enter at least "6 (SIX)" characters / กรอกรหัสผ่านที่ประกอบด้วยอักขระอย่างน้อย 6 ตัว'
                               : null,
                           onChanged: (val) {
                             setState(() => password = val);
@@ -104,7 +105,7 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10.0),
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'NICK NAME ',
+                              labelText: 'NICK NAME / ชื่อเล่น',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -113,7 +114,7 @@ class _RegisterState extends State<Register> {
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
                           validator: (val) =>
-                              val.length < 1 ? 'Enter a nick name' : null,
+                              val.length < 1 ? 'Enter a nick name / กรอกชื่อเล่น' : null,
                           onChanged: (val) {
                             setState(() => name = val);
                           },
@@ -121,7 +122,7 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10.0),
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'PHONE NUMBER ',
+                              labelText: 'PHONE NUMBER / เบอร์โทรศัพท์มือถือ',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -130,7 +131,7 @@ class _RegisterState extends State<Register> {
                                   borderSide:
                                       BorderSide(color: Colors.purple[900]))),
                           validator: (val) =>
-                              val.length < 10 ? 'Enter a phone number' : null,
+                              val.length < 10 ? 'Enter a phone number / กรอกเบอร์โทรศัพท์มือถือ' : null,
                           onChanged: (val) {
                             setState(() => phone = val);
                           },
@@ -254,7 +255,7 @@ class _RegisterState extends State<Register> {
                                             new SignIn()));
                               },
                               child: Text(
-                                'Login',
+                                'Login / เข้าสู่ระบบ',
                                 style: TextStyle(
                                     color: Colors.purple[900],
                                     fontFamily: 'Montserrat',
@@ -273,12 +274,20 @@ class _RegisterState extends State<Register> {
                               Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.grey[200],
+                                  color: Colors.purple[900],
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.purpleAccent[700].withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: Offset(0, 1),
+                                    ),
+                                  ],
                                 ),
                                 child: IconButton(
                                   icon: Icon(Icons.arrow_back),
                                   tooltip: 'Go Back',
-                                  color: Colors.purple[900],
+                                  color: Colors.white,
                                   hoverColor: Colors.purple[400],
                                   iconSize: 40,
                                   onPressed: () {

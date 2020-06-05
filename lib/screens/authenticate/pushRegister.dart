@@ -36,13 +36,14 @@ class PushRegister extends StatelessWidget {
                             context,
                             new MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                new Register()));
+                                    new Register()));
                       },
                       child: Row(
                         children: <Widget>[
                           Expanded(
                             flex: 2,
-                            child: Image.asset('assets/images/ic_premier_league.jpg'),
+                            child: Image.asset(
+                                'assets/images/ic_premier_league.jpg'),
                           ),
                           Expanded(
                             flex: 2,
@@ -52,37 +53,37 @@ class PushRegister extends StatelessWidget {
                       ),
                     ),
                   ),
-              Container(
-                padding: EdgeInsets.all(1),
-                color: Colors.purple[900],
-                child: InkWell(
-                  onTap: () {
+                  Container(
+                    padding: EdgeInsets.all(1),
+                    color: Colors.purple[900],
+                    child: InkWell(
+                      onTap: () {
 //                    Navigator.pushReplacement(
 //                        context,
 //                        new MaterialPageRoute(
 //                            builder: (BuildContext context) =>
 //                            new Register()));
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 3,
-                        child: Image.asset('assets/images/commentary.jpg'),
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Image.asset('assets/images/commentary.jpg'),
+                          ),
+                          SizedBox(width: 1.0),
+                          Expanded(
+                            flex: 3,
+                            child: Image.asset('assets/images/liveScore.jpg'),
+                          ),
+                          SizedBox(width: 1.0),
+                          Expanded(
+                            flex: 3,
+                            child: Image.asset('assets/images/streaming.jpg'),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 1.0),
-                      Expanded(
-                        flex: 3,
-                        child: Image.asset('assets/images/liveScore.jpg'),
-                      ),
-                      SizedBox(width: 1.0),
-                      Expanded(
-                        flex: 3,
-                        child: Image.asset('assets/images/streaming.jpg'),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
                 ],
               ),
               Column(
@@ -123,7 +124,7 @@ class PushRegister extends StatelessWidget {
                                 context,
                                 new MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                    new Register()));
+                                        new Register()));
                           },
                           child: Text(
                             'Signup',
@@ -131,7 +132,7 @@ class PushRegister extends StatelessWidget {
                               fontSize: 20.0,
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
-                                color: Colors.amber[600],
+                              color: Colors.amber[600],
                             ),
                           ),
                         ),
@@ -141,12 +142,12 @@ class PushRegister extends StatelessWidget {
 //                            color: Colors.purple[100],
 //                          ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushReplacement(
                                 context,
                                 new MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                    new SignIn()));
+                                        new SignIn()));
                           },
                           child: Text(
                             'Login',
