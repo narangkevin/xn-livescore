@@ -23,5 +23,5 @@ This project uses encrypted email login feature from Firebase. No passwords are 
 - Bundes Liga
 - Ligue 1
 
-### ALl kinds of Donations accepted
+### All kinds of Donations accepted
 [PayPal](https://www.paypal.me/bigkevxd) - Pay via PayPal
