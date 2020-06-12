@@ -48,26 +48,26 @@ class _ContactUsState extends State<ContactUs> {
                 color: Colors.amber.shade600,
               ),
             ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-              child: Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.phone,
-                    color: Colors.purple[900],
-                  ),
-                  title: Text(
-                    '+66987654321',
-                    style: TextStyle(
-                      color: Colors.purple.shade900,
-                      fontFamily: 'Montserrat',
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+//            Card(
+//              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+//              child: Padding(
+//                padding: const EdgeInsets.all(0.0),
+//                child: ListTile(
+//                  leading: Icon(
+//                    Icons.phone,
+//                    color: Colors.purple[900],
+//                  ),
+//                  title: Text(
+//                    '+66987654321',
+//                    style: TextStyle(
+//                      color: Colors.purple.shade900,
+//                      fontFamily: 'Montserrat',
+//                      fontSize: 20.0,
+//                    ),
+//                  ),
+//                ),
+//              ),
+//            ),
             Card(
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
               child: Padding(
@@ -78,7 +78,7 @@ class _ContactUsState extends State<ContactUs> {
                     color: Colors.purple[900],
                   ),
                   title: Text(
-                    'xnemail@gmail.com',
+                    'officialxn88@gmail.com',
                     style: TextStyle(
                       color: Colors.purple.shade900,
                       fontFamily: 'Montserrat',
